@@ -1,0 +1,17 @@
+﻿@model List<Question>
+<h3>Question</h3>
+<table class="table">
+    <thread class="thead-dark">
+        <tr>
+            <th>Question ID</th>
+            <th>Question</th>
+        </tr>
+        @foreach (Question question in Model)
+        {
+            <tr>
+                <td>@question.QuestionID</td>
+                <td>@question.Quest</td>
+            </tr>
+        }
+    </thread>
+</table>
