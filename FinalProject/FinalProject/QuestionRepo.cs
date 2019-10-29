@@ -12,7 +12,7 @@ namespace FinalProject
         {
             MySqlConnection conn = new MySqlConnection(connection);
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM question;";
+            cmd.CommandText = "select * from question as q INNER JOIN answer as a on a.question_id = q.question_id; ";
             using (conn)
             {
                 conn.Open();
@@ -21,8 +21,9 @@ namespace FinalProject
                 while (reader.Read() == true)
                 {
                     var currentQuestion = new Question();
-                    currentQuestion.QuestionID = reader.GetInt32("question id");
+                    currentQuestion.QuestionID = reader.GetInt32("answer_id");
                     currentQuestion.Quest = reader.GetString("question");
+                    currentQuestion.Ans = reader.GetString("answer");
                     allQuestions.Add(currentQuestion);
                 }
                 return allQuestions;

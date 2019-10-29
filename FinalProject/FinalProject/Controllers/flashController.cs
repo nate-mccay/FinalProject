@@ -15,5 +15,6 @@ namespace FinalProject.Controllers
             List<Question> question = repo.GetAllQuestions();
             return View(question);
         }
+
     }
 }
