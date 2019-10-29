@@ -10,6 +10,5 @@ namespace FinalProject.Models
         public int QuestionID { get; set; }
         public string Quest { get; set; }
         public string Ans { get; set; }
-        public List<Answer> Answers { get; set; }
     }
 }
