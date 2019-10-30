@@ -1,0 +1,11 @@
+﻿@model Question
+<h2>Create New FlashCard</h2>
+@using (Html.BeginForm("InsertQuestionToDatabase", "flash", "Post"))
+{
+    <label asp-for="Quest" class="control-label">Question</label>
+    <input type="text" name="Quest" class="form-control" value="" />
+    <label asp-for="Ans" class="control-label">Answer</label>
+    <input type="text" name="Ans" class="form-control" value="" />
+    <input type="submit" value="Create Product" class="btn btn-primary" />
+
+}

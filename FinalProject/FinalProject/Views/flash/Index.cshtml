@@ -54,6 +54,9 @@
         }
     </style>
 </head>
+<div style="display: block">
+    <a href="/flash/InsertFlash/">Create New FlashCard</a>
+</div>
 @foreach (Question question in Model)
 {
     <div class="flip-card">
@@ -61,11 +64,11 @@
             <div class="flip-card-front">
                 <h1>QUESTION</h1>
                 <h1>@question.QuestionID/@Model.Count</h1>
-                <p>@question.Quest</p>
+                <h3>@question.Quest</h3>
             </div>
             <div class="flip-card-back">
                 <h1>ANSWER</h1>
-                <p>@question.Ans</p>
+                <h3>@question.Ans</h3>
             </div>
         </div>
     </div>

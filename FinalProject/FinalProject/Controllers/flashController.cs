@@ -15,6 +15,17 @@ namespace FinalProject.Controllers
             List<Question> question = repo.GetAllQuestions();
             return View(question);
         }
-
+        public IActionResult InsertFlash()
+        {
+            var repo = new QuestionRepo();
+            
+            return View();
+        }
+        public IActionResult InsertQuestionToDatabase(Question flashToInsert)
+        {
+            var repo = new QuestionRepo();
+            repo.InsertFlash(flashToInsert);
+            return RedirectToAction("Index");
+        }
     }
 }

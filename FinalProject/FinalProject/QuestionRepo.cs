@@ -12,7 +12,7 @@ namespace FinalProject
         {
             MySqlConnection conn = new MySqlConnection(connection);
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select * from question as q INNER JOIN answer as a on a.question_id = q.question_id; ";
+            cmd.CommandText = "select * from source;";
             using (conn)
             {
                 conn.Open();
@@ -21,7 +21,7 @@ namespace FinalProject
                 while (reader.Read() == true)
                 {
                     var currentQuestion = new Question();
-                    currentQuestion.QuestionID = reader.GetInt32("answer_id");
+                    currentQuestion.QuestionID = reader.GetInt32("id");
                     currentQuestion.Quest = reader.GetString("question");
                     currentQuestion.Ans = reader.GetString("answer");
                     allQuestions.Add(currentQuestion);
@@ -29,5 +29,19 @@ namespace FinalProject
                 return allQuestions;
             }
         }
+        public void InsertFlash(Question flashToInsert)
+        {
+            MySqlConnection conn = new MySqlConnection(connection);
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "INSERT INTO source (question, answer) values(@question, @answer)";
+            cmd.Parameters.AddWithValue("question", flashToInsert.Quest);
+            cmd.Parameters.AddWithValue("answer", flashToInsert.Ans);
+            using (conn)
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
     }
 }
