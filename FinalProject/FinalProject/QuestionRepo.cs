@@ -42,6 +42,17 @@ namespace FinalProject
                 cmd.ExecuteNonQuery();
             }
         }
-
+        public void DeleteQuestion(int id)
+        {
+            MySqlConnection conn = new MySqlConnection(connection);
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM source WHERE id = @id;";
+            cmd.Parameters.AddWithValue("id", id);
+            using (conn)
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

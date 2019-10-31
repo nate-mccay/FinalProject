@@ -1,0 +1,29 @@
+﻿@model List<Question>
+<h3>All FlashCards</h3>
+<div style="display: block">
+    <a href="/flash/InsertFlash/">Create New FlashCard</a>
+</div>
+<table class="table">
+    <thread class="thead-dark">
+        <tr>
+            <th>FlashCard Number</th>
+            <th>Question</th>
+            <th>Answer</th>
+        </tr>
+        @foreach (Question question in Model)
+        {
+            <tr>
+                <td>@question.QuestionID</td>
+                <td>@question.Quest</td>
+                <td>@question.Ans</td>
+                <td>
+                    <a href="DeleteQuestion/@question.QuestionID">
+                        <input type="submit" onclick="return confirm('Are You Sure?')" value="Delete" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </thread>
+</table>
+
+

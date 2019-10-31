@@ -9,6 +9,12 @@ namespace FinalProject.Controllers
     public class flashController : Controller
     {
         // GET: /<controller>/
+        public IActionResult ListAll()
+        {
+            QuestionRepo repo = new QuestionRepo();
+            List<Question> question = repo.GetAllQuestions();
+            return View(question);
+        }
         public IActionResult Index()
         {
             QuestionRepo repo = new QuestionRepo();
@@ -17,15 +23,19 @@ namespace FinalProject.Controllers
         }
         public IActionResult InsertFlash()
         {
-            var repo = new QuestionRepo();
-            
             return View();
         }
         public IActionResult InsertQuestionToDatabase(Question flashToInsert)
         {
             var repo = new QuestionRepo();
             repo.InsertFlash(flashToInsert);
-            return RedirectToAction("Index");
+            return RedirectToAction("ListAll");
+        }
+        public IActionResult DeleteQuestion(int id)
+        {
+            var repo = new QuestionRepo();
+            repo.DeleteQuestion(id);
+            return RedirectToAction("ListAll");
         }
     }
 }
