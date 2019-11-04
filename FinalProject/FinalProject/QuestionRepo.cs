@@ -71,7 +71,7 @@ namespace FinalProject
         {
             MySqlConnection conn = new MySqlConnection(connection);
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "DELETE FROM source WHERE id = @id;";
+            cmd.CommandText = "DELETE FROM source WHERE id = @id ; ALTER TABLE source DROP id; ALTER TABLE source AUTO_INCREMENT = 1;ALTER TABLE source ADD id  int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
             cmd.Parameters.AddWithValue("id", id);
             using (conn)
             {
