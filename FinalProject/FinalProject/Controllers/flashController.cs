@@ -37,5 +37,25 @@ namespace FinalProject.Controllers
             repo.DeleteQuestion(id);
             return RedirectToAction("ListAll");
         }
+
+
+        public IActionResult UpdateFlash(int id)
+        {
+            var repo = new QuestionRepo();
+            var question = repo.GetQuestion(id);
+            return View(question);  
+
+        }
+
+        public IActionResult UpdateQuestionToDatabase(Question flashToUpdate)
+        {
+            var repo = new QuestionRepo();
+            repo.UpdateQuestion(flashToUpdate);
+            return RedirectToAction("ListAll");
+        }
     }
+
+
+
+
 }

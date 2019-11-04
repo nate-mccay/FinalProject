@@ -1,0 +1,20 @@
+﻿
+@model Question
+
+<h2> Update @Model.Quest</h2>
+
+@using (Html.BeginForm("UpdateQuestionToDatabase", "flash", "Post"))
+{
+    <input asp-for="QuestionID" type="hidden" value="@Model.QuestionID" />
+
+    <label asp-for="Quest" class="control-label">Question</label>
+
+        <input type="text" name="Quest" class="form-control" value="@Model.Quest" />
+
+        <label asp-for="Ans" class="control-label">Answer</label>
+
+        <input type="text" name="Ans" class="form-control" value="@Model.Ans" />
+
+        <input type="submit" value="Update Product" class=" btn btn-primary" />
+
+        }

@@ -29,6 +29,31 @@ namespace FinalProject
                 return allQuestions;
             }
         }
+
+        public Question GetQuestion(int id)
+        {
+            MySqlConnection conn = new MySqlConnection(connection);
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select * from source WHERE id = @id;";
+            cmd.Parameters.AddWithValue("id", id);
+
+            using (conn)
+            {
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                var currentQuestion = new Question();
+
+                while (reader.Read() == true)
+                {
+                    
+                    currentQuestion.QuestionID = reader.GetInt32("id");
+                    currentQuestion.Quest = reader.GetString("question");
+                    currentQuestion.Ans = reader.GetString("answer");
+                    
+                }
+                return currentQuestion;
+            }
+        }
         public void InsertFlash(Question flashToInsert)
         {
             MySqlConnection conn = new MySqlConnection(connection);
@@ -54,5 +79,23 @@ namespace FinalProject
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void UpdateQuestion(Question flashToUpdate)
+        {
+            MySqlConnection conn = new MySqlConnection(connection);
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "Update source SET question = @question,answer = @answer WHERE id = @id;";
+            cmd.Parameters.AddWithValue("question",flashToUpdate.Quest);
+            cmd.Parameters.AddWithValue("answer", flashToUpdate.Ans);
+            cmd.Parameters.AddWithValue("id", flashToUpdate.QuestionID);
+
+            using (conn)
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
+
 }
