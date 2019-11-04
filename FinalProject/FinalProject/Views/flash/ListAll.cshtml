@@ -12,16 +12,22 @@
         </tr>
         @foreach (Question question in Model)
         {
-            <tr>
-                <td>@question.QuestionID</td>
-                <td>@question.Quest</td>
-                <td>@question.Ans</td>
-                <td>
-                    <a href="DeleteQuestion/@question.QuestionID">
-                        <input type="submit" onclick="return confirm('Are You Sure?')" value="Delete" />
-                    </a>
-                </td>
-            </tr>
+    <tr>
+        <td>@question.QuestionID</td>
+        <td>@question.Quest</td>
+        <td>@question.Ans</td>
+        <td>
+            <a href="DeleteQuestion/@question.QuestionID">
+                <input type="submit" onclick="return confirm('Are You Sure?')" value="Delete" />
+            </a>
+        </td>
+        <td>
+            <a href="UpdateFlash/@question.QuestionID">
+                <input type="submit"  value="Update" />
+            </a>
+        </td>
+
+    </tr>
         }
     </thread>
 </table>
