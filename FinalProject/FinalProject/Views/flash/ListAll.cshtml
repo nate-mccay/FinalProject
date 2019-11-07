@@ -1,35 +1,44 @@
 ﻿@model List<Question>
-<h3>All FlashCards</h3>
-<div style="display: block">
-    <a href="/flash/InsertFlash/">Create New FlashCard</a>
-</div>
-<table class="table">
-    <thread class="thead-dark">
-        <tr>
-            <th>FlashCard Number</th>
-            <th>Question</th>
-            <th>Answer</th>
-        </tr>
-        @foreach (Question question in Model)
-        {
-    <tr>
-        <td>@question.QuestionID</td>
-        <td>@question.Quest</td>
-        <td>@question.Ans</td>
-        <td>
-            <a href="DeleteQuestion/@question.QuestionID">
-                <input type="submit" onclick="return confirm('Are You Sure?')" value="Delete" />
-            </a>
-        </td>
-        <td>
-            <a href="UpdateFlash/@question.QuestionID">
-                <input type="submit"  value="Update" />
-            </a>
-        </td>
+<style>
+    body {
+        background-color: aliceblue;
+    }
+    .fly{
+        box-shadow:0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        background-color:lightsteelblue;
+    }
+</style>
+        <h3>All FlashCards</h3>
+        <div style="display: block">
+            <a href="/flash/InsertFlash/">Create New FlashCard</a>
+        </div>
+        <table class="table fly">
+            <thread class="thead-dark">
+                <tr>
+                    <th>FlashCard Number</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+                @foreach (Question question in Model)
+                {
+                    <tr>
+                        <td>@question.QuestionID</td>
+                        <td>@question.Quest</td>
+                        <td>@question.Ans</td>
+                        <td>
+                            <a href="UpdateFlash/@question.QuestionID">
+                                <input type="submit" value="Update" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="DeleteQuestion/@question.QuestionID">
+                                <input type="submit" onclick="return confirm('Are You Sure?')" value="Delete" />
+                            </a>
+                        </td>
 
-    </tr>
-        }
-    </thread>
-</table>
-
+                    </tr>
+                }
+            </thread>
+        </table>
+ 
 

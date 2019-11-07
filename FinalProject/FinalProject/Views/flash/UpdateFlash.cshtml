@@ -1,20 +1,26 @@
-﻿
-@model Question
+﻿@model Question
+    <style>
+        body {
+            background-color: aliceblue;
+        }
 
-<h2> Update @Model.Quest</h2>
+        .fly {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        }
+    </style>
+        <h2> Update @Model.Quest</h2>
 
-@using (Html.BeginForm("UpdateQuestionToDatabase", "flash", "Post"))
-{
-    <input asp-for="QuestionID" type="hidden" value="@Model.QuestionID" />
+        @using (Html.BeginForm("UpdateQuestionToDatabase", "flash", "Post"))
+        {
+            <input asp-for="QuestionID" type="hidden" value="@Model.QuestionID" />
 
-    <label asp-for="Quest" class="control-label">Question</label>
+            <label asp-for="Quest" class="control-label">Question</label>
 
-        <input type="text" name="Quest" class="form-control" value="@Model.Quest" />
+            <input type="text" name="Quest" class="form-control fly" value="@Model.Quest" />
 
-        <label asp-for="Ans" class="control-label">Answer</label>
+            <label asp-for="Ans" class="control-label">Answer</label>
 
-        <input type="text" name="Ans" class="form-control" value="@Model.Ans" />
+            <input type="text" name="Ans" class="form-control fly" value="@Model.Ans" />
 
-        <input type="submit" value="Update Product" class=" btn btn-primary" />
-
+            <input type="submit" value="Update Product" class=" btn btn-primary fly" />
         }

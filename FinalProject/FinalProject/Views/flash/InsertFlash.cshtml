@@ -1,11 +1,19 @@
 ﻿@model Question
-<h2>Create New FlashCard</h2>
-@using (Html.BeginForm("InsertQuestionToDatabase", "flash", "Post"))
-{
-    <label asp-for="Quest" class="control-label">Question</label>
-    <input type="text" name="Quest" class="form-control" value="" />
-    <label asp-for="Ans" class="control-label">Answer</label>
-    <input type="text" name="Ans" class="form-control" value="" />
-    <input type="submit" value="Create Product" class="btn btn-primary" />
+<style>
+    body {
+        background-color: aliceblue;
+    }
+    .fly{
+        box-shadow:0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+</style>
+        <h2>Create New FlashCard</h2>
+        @using (Html.BeginForm("InsertQuestionToDatabase", "flash", "Post"))
+        {
+            <label class="control-label" asp-for="Quest" >Question</label>
+            <input type="text" name="Quest" class="fly form-control" value="" />
+            <label asp-for="Ans" class="control-label">Answer</label>
+            <input type="text" name="Ans" class="fly form-control" value="" />
+            <input type="submit" value="Create FlashCard" class="btn btn-primary fly" />
 
-}
+        }
